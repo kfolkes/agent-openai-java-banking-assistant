@@ -41,4 +41,10 @@ public class AccountController {
         logger.info("Received request to get beneficiary details for account id: {}", accountId);
         return accountService.getRegisteredBeneficiary(accountId);
     }
+
+    @GetMapping("/{accountId}/balance")
+    public String getAccountBalance(@PathVariable String accountId) {
+        logger.info("Received request to get account balance for account id: {}", accountId);
+        return accountService.getAccountBalance(accountId);
+    }
 }

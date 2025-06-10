@@ -93,4 +93,16 @@ public class AccountService {
                 new Beneficiary("2", "Jane TheElectrician", "987654321", "UBS")
         );
     }
+
+    public String getAccountBalance(String accountId) {
+        if (accountId == null || accountId.isEmpty())
+            throw new IllegalArgumentException("AccountId is empty or null");
+        try {
+            Integer.parseInt(accountId);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("AccountId is not a valid number");
+        }
+        Account account = this.accounts.get(accountId);
+        return account != null ? account.balance() : null;
+    }
 }
